@@ -1,0 +1,279 @@
+body {
+    padding:0px!important;
+    margin:0px!important;
+    min-width: 1000px;
+}
+header {
+    width:100%;
+    height:80px;
+    background-color: #333;
+    border-bottom: 3px solid #555;
+    padding-right: 20px;
+}
+header .inner {
+    width:1000px;
+    margin:0 auto;
+}
+header #logo {
+    float:left;
+    margin-top:33px;
+}
+header .login {
+    float:right;
+    width:400px;
+    margin-top:8px;
+}
+header .login .inner {
+    width:400px;
+}
+header .login .inner .notice_login {
+    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+    color: #ebebeb;
+    float:left;
+    width:165px;
+}
+header .login .inner .notice_password {
+    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+    color: #ebebeb;
+    float:left;
+    width:200px;
+}
+header .login .inner input[type=text], header .login .inner input[type=password] {
+    width:140px;
+    height: 13px;
+    float:left;
+    background-color: #ebebeb;
+    color: #333;
+    border: 1px solid #666      ;
+    border-radius: 0px;
+    font-size:13px;
+    margin-right: 10px;
+    margin-bottom: 1px;
+    font: 13px/10px Arial;
+}
+header .login .inner input[type=text]:focus, header .login .inner input[type=password]:focus {
+    border-color: none;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(51, 51, 51, 0.6);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(51, 51, 51, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(51, 51, 51, 0.6);
+}
+header .login .inner input[type=submit] {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #999;
+    border-radius: 0px;
+    font: 11px/11px 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-weight: bold;
+    height:22px;
+    margin:0px;
+}
+header .login .inner .rememberme {
+    float:left;
+    width:165px;
+    color: #999;
+    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+}
+header .login .inner input[type=checkbox] {
+    float:left;
+    margin-right:6px;
+}
+header .login .inner .rememberme label {
+    display: block;
+    float:left;
+    margin-top:1px;
+    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+}
+header .login .inner .remindpass {
+    float:left;
+}
+header .login .inner .remindpass a:link, header .login .inner .remindpass a:active, header .login .inner .remindpass a:visited {
+    color:#999;
+    text-decoration: none;
+    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+}
+
+.content {
+    padding:10px;
+    width:100%;
+    height:540px;
+    background-color: #ebebeb;
+}
+.content .inner {
+    width:1000px;
+    margin:0 auto;
+}
+.content .inner .left {
+    width:470px;
+    float:left;
+}
+.content .inner .left h1 {
+    font-family: 'Arial';
+    font-weight: bold;
+    padding: 42px 0 24px;
+    font-size: 28px;
+    line-height: 36px;
+}
+.content .inner .left .inline {
+    padding:20px 10px 20px 80px;
+}
+.content .inner .left .inline span {
+    font: 18px/20px Arial;
+    font-weight: bold;
+}
+.content .inner .left .one {
+    background: url("../img/inline_1.png") left no-repeat;
+}
+.content .inner .left .two {
+    background: url("../img/inline_2.png") left no-repeat;
+}
+.content .inner .left .three {
+    background: url("../img/inline_3.png") left no-repeat;
+}
+.content .inner .left .four {
+    background: url("../img/inline_4.png") left no-repeat;
+}
+.content .inner .right {
+    width:410px;
+    float:right;
+}
+.content .inner .right h1 {
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 36px;
+    padding-bottom: 10px;
+    padding-top:10px;
+}
+.content .inner .right input[type=text], .content .inner .right input[type=password] {
+    width:376px;
+    height:17px;
+    padding:10px;
+}
+.content .inner .right input[type=text]:focus, .content .inner .right input[type=password]:focus {
+    border-color: rgba(51, 51, 51, 0.3);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(51, 51, 51, 0.6);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(51, 51, 51, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(51, 51, 51, 0.6);
+}
+.content .inner .right #mini {
+    width:172px;
+    float:left;
+}
+.content .inner .right select {
+    width:130px;
+    float:left;
+    margin-right:5px;
+    height:37px;
+    margin-bottom:14px;
+    padding:8px;
+}
+.content .inner .right .check-label input{
+    float:left;
+    margin-top: 10px
+}
+.content .inner .right .check-label label{
+    float:left;
+    font: 18px/20px Arial;
+    font-weight: bold;
+    margin: 7px 20px 14px 10px;
+}
+.content .inner .right span {
+    float:left;
+    font:12px/16px Arial;
+    color: #666;
+}
+.content .inner .right input[type=submit] {
+    float:left;
+    margin-top: 20px;
+    width:200px;
+    height:40px;
+}
+.content .inner .center {
+    margin: auto;
+    width: 900px;
+}
+.content .inner .login-form {
+    float:left;
+    width:420px;
+    padding: 0px 10px;
+    margin-top:100px;
+}
+.content .inner .login-form input[type=text], .content .inner .login-form input[type=password] {
+    width:400px;
+    height:30px;
+    margin:4px 0;
+}
+.content .inner .login-form input[type=text]:focus, .content .inner .login-form input[type=password]:focus {
+    border-color: rgba(51, 51, 51, 0.3);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(51, 51, 51, 0.6);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(51, 51, 51, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(51, 51, 51, 0.6);
+}
+.content .inner .login-form input[type=submit] {
+    width:160px;
+    height:36px;
+    margin:4px 0;
+}
+.content .inner .login-form a {
+    color: #333;
+    float:right;
+    padding: 10px 20px;
+}
+.content .inner .login-form .rememberme {
+    width:400px;
+    height: 30px;
+}
+.content .inner .login-form .rememberme input{
+    float:left;
+    margin-top:8px;
+    margin-left:2px;
+}
+.content .inner .login-form .rememberme label{
+    float:left;
+    margin-top:4px;
+    margin-left: 10px;
+}
+.content .inner .login-notify {
+    margin-top:164px;
+    float:left;
+    border-radius: 5px;
+    margin-left:50px;
+}
+.content .inner .login-notify .inner {
+    width:300px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+footer {
+    width:100%;
+    padding:10px;
+}
+footer .inner {
+    width:1000px;
+    margin:0 auto;
+    font: 11px/14px Arial;
+    color: #666;
+}
+footer .lang {
+    width:100%;
+    border-bottom:1px solid #999;
+    float:left;
+    height:21px;
+    margin:0px;
+    margin-bottom:10px;
+}
+footer .lang li {
+    float:left;
+    list-style: none;
+    margin-right:10px;
+    font: 11px/14px Arial;
+}
+footer .lang li a {
+    color: #666;
+}
