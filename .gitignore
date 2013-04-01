@@ -2,4 +2,5 @@
 .idea/
 .settings/
 target/
+config/
 contactmanager.iml
