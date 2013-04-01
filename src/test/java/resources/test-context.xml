@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/data/mongo
+    http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Default bean name is 'mongo' -->
+    <mongo:db-factory id="mongo"
+                      host="localhost"
+                      port="27017"
+                      dbname="mTalks"
+                      username="mTalks"
+                      password="TalkUserAdmin"/>
+    <mongo:repositories base-package="com.mtalks.v1.dao" />
+
+    <bean id="mongoTemplate"
+          class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg ref="mongo"/>
+    </bean>
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.mtalks.v1.service" />
+
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:messages" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${mail.smtp.host}" />
+        <property name="port" value="${mail.smtp.port}" />
+        <property name="username" value="${mail.username}" />
+        <property name="password" value="${mail.password}" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                <prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="reCaptcha" class="net.tanesha.recaptcha.ReCaptchaImpl">
+        <property name="privateKey" value="6LfJ7t4SAAAAABvOga5-TlDvT2QcE-dj5FpJvL16" />
+        <property name="publicKey" value="6LfJ7t4SAAAAADKdFMMGeulGaLNHXHwCUXTR1Yla" />
+        <property name="includeNoscript" value="false" />
+    </bean>
+
+    <bean id="mailProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="resources/mail.properties"/>
+    </bean>
+
+    <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+    <bean id="customUserDetailsService" class="com.mtalks.v1.service.utils.security.CustomUserDetailsService"/>
+
+
+</beans>
