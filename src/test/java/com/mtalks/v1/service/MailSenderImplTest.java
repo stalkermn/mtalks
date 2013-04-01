@@ -20,7 +20,7 @@ import java.util.UUID;
  * Time: 8:16 PM
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/resources/test-context.xml")
+@ContextConfiguration("/test-context.xml")
 public class MailSenderImplTest {
 
     @Autowired

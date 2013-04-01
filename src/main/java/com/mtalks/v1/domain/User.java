@@ -3,6 +3,7 @@ package com.mtalks.v1.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,14 +17,16 @@ public class User {
 
 	@Id
 	private String id;
+    @Indexed(unique = true)
     private String login;
-    @DBRef
+    @DBRef()
     private Contact contact;
     private String password;
     private boolean enabled;
     private Integer role;
 	private String firstname;
 	private String lastname;
+    @Indexed(unique = true)
 	private String email;
     private String gender;
     private Date birthday;

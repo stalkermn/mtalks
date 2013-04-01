@@ -1,6 +1,8 @@
 package com.mtalks.v1;
 
+import com.mtalks.v1.dao.ContactRepository;
 import com.mtalks.v1.dao.UserRepository;
+import com.mtalks.v1.domain.Contact;
 import com.mtalks.v1.domain.User;
 
 import junit.framework.Assert;
@@ -18,11 +20,9 @@ import java.util.UUID;
 
 
 /**
- * Created with IntelliJ IDEA.
  * User: User
  * Date: 25.03.13
  * Time: 3:42
- * To change this template use File | Settings | File Templates.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/test-context.xml")
@@ -32,6 +32,9 @@ public class UserRepositoryTest {
 
     @Autowired
     MongoTemplate mongoTemplate;
+
+    @Autowired
+    ContactRepository contactRepository;
 
     @Autowired
     UserRepository userRepository;
@@ -52,7 +55,6 @@ public class UserRepositoryTest {
         user = userRepository.save(user);
     }
 
-    //@Test
     public void testFindByLogin() throws Exception {
         log.info("Create and save testUser");
         User user = new User();
@@ -89,5 +91,29 @@ public class UserRepositoryTest {
         User updatedUser = userRepository.findById(user.getId());
         Assert.assertEquals(user.getId(), updatedUser.getId());
         Assert.assertTrue(user.getEmail().equals(updatedUser.getEmail()));
+    }
+
+    @Test
+    public void testWithContact(){
+        System.out.println(user);
+        Contact contact = createTestContact();
+        contactRepository.save(contact);
+        user.setContact(contact);
+        contactRepository.save(contact);
+        user = userRepository.save(user);
+
+        User saved_user = userRepository.findById(user.getId());
+        Contact contact1 = contactRepository.findOne(saved_user.getContact().getId());
+        System.out.println(contact1);
+        System.out.println(saved_user);
+    }
+
+    private Contact createTestContact(){
+        Contact contact = new Contact();
+        contact.setAdress("bla bla");
+        contact.setBiography("bla bla bla");
+        contact.setSkype("dn010491vvs");
+        contact.setTelephone("+38099*******");
+        return contact;
     }
 }

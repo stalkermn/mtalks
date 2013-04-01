@@ -16,14 +16,13 @@
                       username="mTalks"
                       password="TalkUserAdmin"/>
     <mongo:repositories base-package="com.mtalks.v1.dao" />
+    <context:annotation-config />
+    <context:component-scan base-package="com.mtalks.v1.service" />
 
     <bean id="mongoTemplate"
           class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg ref="mongo"/>
     </bean>
-
-    <context:annotation-config />
-    <context:component-scan base-package="com.mtalks.v1.service" />
 
     <bean id="messageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
@@ -51,7 +50,7 @@
     </bean>
 
     <bean id="mailProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="resources/mail.properties"/>
+        <property name="location" value="mail.properties"/>
     </bean>
 
     <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
