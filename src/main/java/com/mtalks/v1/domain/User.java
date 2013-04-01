@@ -3,6 +3,7 @@ package com.mtalks.v1.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -11,11 +12,13 @@ import java.util.Collection;
 import java.util.Date;
 
 @Document(collection="user")
-public class BasicUser {
+public class User {
 
 	@Id
 	private String id;
     private String login;
+    @DBRef
+    private Contact contact;
     private String password;
     private boolean enabled;
     private Integer role;
@@ -27,10 +30,10 @@ public class BasicUser {
 
 
 
-    public BasicUser(String login, String password, boolean b, boolean b1, boolean b2, boolean b3, Collection<GrantedAuthority> authorities) {
+    public User(String login, String password, boolean b, boolean b1, boolean b2, boolean b3, Collection<GrantedAuthority> authorities) {
     }
 
-    public BasicUser(String login, String psw, Boolean enabled, Integer role, String firstname, String lastname, String email, String gender, Date birthday){
+    public User(String login, String psw, Boolean enabled, Integer role, String firstname, String lastname, String email, String gender, Date birthday){
         this.login = login;
         this.password = psw;
         this.firstname = firstname;
@@ -42,7 +45,7 @@ public class BasicUser {
         this.birthday = birthday;
     }
 
-    public BasicUser() {
+    public User() {
     }
 
     public String getId() {
@@ -152,7 +155,7 @@ public class BasicUser {
 
     @Override
     public boolean equals(Object o){
-        BasicUser that = (BasicUser) o;
+        User that = (User) o;
         return new EqualsBuilder()
                 .append(this.login, that.login)
                 .append(this.firstname, that.firstname)
@@ -164,5 +167,12 @@ public class BasicUser {
     }
 
 
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
 }
 

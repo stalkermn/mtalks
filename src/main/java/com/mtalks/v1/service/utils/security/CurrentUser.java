@@ -1,6 +1,6 @@
 package com.mtalks.v1.service.utils.security;
 
-import com.mtalks.v1.domain.BasicUser;
+import com.mtalks.v1.domain.User;
 import com.mtalks.v1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -21,7 +21,7 @@ public class CurrentUser implements Serializable {
     private static final long serialVersionUID = 3511185364019240683L;
     private String id;
     private String login;
-    private BasicUser user;
+    private User user;
     @Autowired
     private UserService userService;
 
@@ -58,14 +58,14 @@ public class CurrentUser implements Serializable {
         this.login = login;
     }
 
-    public BasicUser getUser() {
+    public User getUser() {
         if (user == null) {
             populateData();
         }
         return user;
     }
 
-    public void setUser(BasicUser user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }

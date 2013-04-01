@@ -1,6 +1,5 @@
 package com.mtalks.v1.service;
 
-import com.mtalks.v1.domain.BasicUser;
 import org.apache.commons.mail.EmailException;
 
 /**

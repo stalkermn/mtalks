@@ -1,24 +1,24 @@
 package com.mtalks.v1.service;
 
-import com.mtalks.v1.domain.BasicUser;
+import com.mtalks.v1.domain.User;
 
 import java.util.List;
 
 public interface UserService {
 
-	public BasicUser save(BasicUser basicUser);
+	public User save(User user);
 
-	public List<BasicUser> findAll();
+	public List<User> findAll();
 
-    public BasicUser findById(String id);
+    public User findById(String id);
 
-    public BasicUser findByLogin(String Login);
+    public User findByLogin(String Login);
 
 	public void delete(String id);
 
     public void deleteByLogin(String login);
 
-    public BasicUser findByEmail(String email);
+    public User findByEmail(String email);
 
-    public void update(BasicUser basicUser);
+    public void update(User user);
 }

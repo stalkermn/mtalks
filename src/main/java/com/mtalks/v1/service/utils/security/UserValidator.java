@@ -1,6 +1,6 @@
 package com.mtalks.v1.service.utils.security;
 
-import com.mtalks.v1.domain.BasicUser;
+import com.mtalks.v1.domain.User;
 
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -31,11 +31,11 @@ public class UserValidator {
         return (birthday.getTime() != new Date().getTime() && birthday.getYear() > 1900);
     }
 
-    public static Boolean validate(BasicUser basicUser){
-        basicUser.getEmail().trim();
-        basicUser.getFirstname().trim();
-        basicUser.getLastname().trim();
-        basicUser.getLogin().trim();
-        return (loginValidation(basicUser.getLogin()) && emailValidation(basicUser.getEmail()));
+    public static Boolean validate(User user){
+        user.getEmail().trim();
+        user.getFirstname().trim();
+        user.getLastname().trim();
+        user.getLogin().trim();
+        return (loginValidation(user.getLogin()) && emailValidation(user.getEmail()));
     }
 }

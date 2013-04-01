@@ -1,7 +1,7 @@
 package com.mtalks.v1.service;
 
 import com.mtalks.v1.dao.UserRepository;
-import com.mtalks.v1.domain.BasicUser;
+import com.mtalks.v1.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,25 +25,25 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public BasicUser save(BasicUser basicUser) {
-        return userRepository.save(basicUser);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public List<BasicUser> findAll() {
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 
     @Transactional(readOnly = true)
     @Override
-    public BasicUser findById(String id) {
+    public User findById(String id) {
         return userRepository.findById(id);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public BasicUser findByLogin(String login) {
+    public User findByLogin(String login) {
         return userRepository.findByLogin(login);
     }
 
@@ -56,20 +56,20 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void deleteByLogin(String login) {
-        BasicUser bu = new BasicUser();
+        User bu = new User();
         bu.setLogin(login);
         userRepository.delete(bu);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public BasicUser findByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Transactional
     @Override
-    public void update(BasicUser basicUser) {
-        userRepository.save(basicUser);
+    public void update(User user) {
+        userRepository.save(user);
     }
 }

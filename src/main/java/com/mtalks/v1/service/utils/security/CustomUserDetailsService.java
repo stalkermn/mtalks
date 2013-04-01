@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mtalks.v1.dao.UserRepository;
-import com.mtalks.v1.domain.BasicUser;
+import com.mtalks.v1.domain.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public SaltedUser loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        BasicUser user = getUserDetail(username);
+        User user = getUserDetail(username);
         SaltedUser userDetail = null;
         if(user != null){
             System.out.println(username);
@@ -54,9 +54,9 @@ public class CustomUserDetailsService implements UserDetailsService {
         return authList;
     }
 
-    public BasicUser getUserDetail(String username){
+    public User getUserDetail(String username){
         System.out.println(username);
-        BasicUser user = userRepository.findByLogin(username);
+        User user = userRepository.findByLogin(username);
         if(user ==null){
             user = userRepository.findByEmail(username);
         }

@@ -1,7 +1,7 @@
 package com.mtalks.v1.domain;
 
 /**
- * BasicUser: BasicUser
+ * User: User
  * Date: 24.03.13
  * Time: 12:29
  */

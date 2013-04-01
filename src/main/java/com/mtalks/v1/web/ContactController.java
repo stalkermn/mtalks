@@ -1,16 +1,5 @@
 package com.mtalks.v1.web;
 
-import com.mtalks.v1.domain.BasicUser;
-import com.mtalks.v1.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Map;
-
 //@Controller
 public class ContactController {
 //
@@ -20,7 +9,7 @@ public class ContactController {
 ////    //@RequestMapping(value = "/search/login/{login}")
 ////    public String searchByLogin(@PathVariable("login") String login, Map<String, Object> map){
 ////
-////        map.put("basicUser", new BasicUser());
+////        map.put("basicUser", new User());
 ////        map.put("searchResult", userService.findByLoginEntry(login));
 ////        return "searchresult";
 ////    }
@@ -28,7 +17,7 @@ public class ContactController {
 ////    //@RequestMapping(value = "/search/telephone/{telephone}")
 ////    public String searchByTelephone(@PathVariable("telephone") String telephone, Map<String, Object> map){
 ////
-////        map.put("basicUser", new BasicUser());
+////        map.put("basicUser", new User());
 ////        map.put("searchResult", userService.findByPhoneEntry(telephone));
 ////        return "searchresult";
 ////    }
@@ -44,7 +33,7 @@ public class ContactController {
 //    }
 //
 //    //@RequestMapping(value = "/add", method = RequestMethod.POST)
-//    public String addContact(@ModelAttribute("contact") BasicUser basicUser,
+//    public String addContact(@ModelAttribute("contact") User basicUser,
 //                             BindingResult result) {
 //
 //        userService.save(basicUser);
@@ -67,7 +56,7 @@ public class ContactController {
 //
 //
 //    //@RequestMapping("/edit")
-//    public String edit( @ModelAttribute("contact") BasicUser basicUser,
+//    public String edit( @ModelAttribute("contact") User basicUser,
 //            @RequestParam("login") String login,
 //            @RequestParam("password") String password,
 //            @RequestParam("enabled") boolean enabled,
@@ -87,7 +76,7 @@ public class ContactController {
 //
 //    //@RequestMapping(value = "/addContact", method = RequestMethod.GET)
 //    public String showCreateUser(Model model) {
-//       BasicUser basicUser = new BasicUser();
+//       User basicUser = new User();
 //        basicUser.setEnabled(true);
 //        model.addAttribute("contact", basicUser);
 //        return "addeditContact";

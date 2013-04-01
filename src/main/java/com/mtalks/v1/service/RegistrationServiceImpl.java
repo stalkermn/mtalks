@@ -1,6 +1,6 @@
 package com.mtalks.v1.service;
 
-import com.mtalks.v1.domain.BasicUser;
+import com.mtalks.v1.domain.User;
 import com.mtalks.v1.domain.Confirm;
 import com.mtalks.v1.service.utils.security.UserValidator;
 import org.apache.commons.mail.EmailException;
@@ -35,13 +35,13 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Transactional
     @Override
-    public Boolean registration(BasicUser basicUser, HttpServletRequest request) {
-        if(basicUser != null && UserValidator.validate(basicUser)){
-            basicUser.setEnabled(false);
-            basicUser.setRole(2);
-            basicUser.setPassword(passwordEncoder.encodePassword(basicUser.getPassword(), basicUser.getEmail()));
+    public Boolean registration(User user, HttpServletRequest request) {
+        if(user != null && UserValidator.validate(user)){
+            user.setEnabled(false);
+            user.setRole(2);
+            user.setPassword(passwordEncoder.encodePassword(user.getPassword(), user.getEmail()));
             try{
-                mailService.sendConfirmationEmail(userService.save(basicUser).getEmail(), confirmService.save(createConfirm(basicUser)).getToken(), String.format(HOST_PORT, request.getServerName(),request.getServerPort()));
+                mailService.sendConfirmationEmail(userService.save(user).getEmail(), confirmService.save(createConfirm(user)).getToken(), String.format(HOST_PORT, request.getServerName(),request.getServerPort()));
 
             } catch (EmailException ex){
                 System.out.println(ex.getMessage());
@@ -58,10 +58,10 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public Boolean confirmation(String token) {
         Confirm confirm = confirmService.findByToken(token);
-        BasicUser bu = userService.findByEmail(confirm.getEmail());
-        if( null != confirm && null != bu && !bu.isEnabled()){
-            bu.setEnabled(true);
-            userService.update(bu);
+        User user = userService.findByEmail(confirm.getEmail());
+        if( null != confirm && null != user && !user.isEnabled()){
+            user.setEnabled(true);
+            userService.update(user);
             confirmService.delete(confirm);
             return true;
         } else {
@@ -69,7 +69,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         }
     }
 
-    private Confirm createConfirm(BasicUser user){
+    private Confirm createConfirm(User user){
         Confirm confirm = new Confirm();
         confirm.setCreationTime(new Date());
         confirm.setEmail(user.getEmail());

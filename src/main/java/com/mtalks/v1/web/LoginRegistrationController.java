@@ -1,8 +1,7 @@
 package com.mtalks.v1.web;
 
-import com.mtalks.v1.domain.BasicUser;
+import com.mtalks.v1.domain.User;
 import com.mtalks.v1.service.RegistrationService;
-import com.mtalks.v1.service.utils.security.CustomUserDetailsService;
 import com.mtalks.v1.service.CaptchaService;
 import com.mtalks.v1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class LoginRegistrationController {
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String login(ModelMap model, @RequestParam(value = "regerror", required = false) Boolean regError) {
-        model.addAttribute("user", new BasicUser());
+        model.addAttribute("user", new User());
         if(regError!= null && regError){
             model.put("regerror", regError);
         }
@@ -74,9 +73,9 @@ public class LoginRegistrationController {
 //    }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("user") BasicUser basicUser,
+    public String registration(@ModelAttribute("user") User user,
                              BindingResult result, HttpServletRequest request, ModelMap modelMap) {
-        if(registrationService.registration(basicUser, request)){
+        if(registrationService.registration(user, request)){
             return "registrationSuccess";
         } else {
             return "redirect:/regerror?=true";
