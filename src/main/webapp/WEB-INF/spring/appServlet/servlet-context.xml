@@ -11,7 +11,7 @@
 	<!-- Разрешаем использование аннотаций Spring MVC (то есть @Controller и.т.д) -->
 	<annotation-driven />
 
-	<!-- Всю статику (изображения, css-файлы, javascript) положим в папку webapp/resources 
+	<!-- Всю статику (изображения, css-файлы, javascript) положим в папку webapp/resources
 		и замаппим их на урл вида /resources/** -->
 	<resources mapping="/resources/**" location="/resources/" />
 
@@ -26,7 +26,7 @@
         <beans:property name="messageConverters">
             <beans:array>
                 <beans:bean class = "org.springframework.http.converter.StringHttpMessageConverter">
-                    <beans:property name="supportedMediaTypes" value = "text/plain;charset=UTF-8" />
+                    <beans:property name="supportedMediaTypes" value = "text/plain;charset=UTF-8;application/json" />
                 </beans:bean>
             </beans:array>
         </beans:property>

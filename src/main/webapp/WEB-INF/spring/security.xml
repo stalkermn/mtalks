@@ -11,7 +11,7 @@
 
     <http use-expressions="true" access-denied-page="/error403.jsp">
 
-        <intercept-url pattern="/" access="isAnonymous()"/>
+        <intercept-url pattern="/" access="permitAll"/>
         <intercept-url pattern="/index" access="isAuthenticated()"/>
         <intercept-url pattern="/search" access="isAuthenticated()"/>
 
@@ -19,7 +19,9 @@
                     authentication-failure-url="/loginfailed"
                     default-target-url="/search"/>
         <http-basic/>
-        <logout logout-url="/logout" invalidate-session="true" logout-success-url="/"/>
+        <logout logout-url="/logout"
+                invalidate-session="true"
+                logout-success-url="/"/>
         <remember-me user-service-ref="customUserDetailsService"/>
     </http>
 
