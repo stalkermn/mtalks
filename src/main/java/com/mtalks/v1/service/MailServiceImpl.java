@@ -16,16 +16,14 @@ public class MailServiceImpl implements MailService {
 
     @Autowired
     private MailSender mailSender;
-    @Autowired
-    MailTemplates templates;
 
     @Override
     public void sendConfirmationEmail(String userEmail, String confirmationToken, String serverName) throws EmailException {
-        mailSender.send(templates.getConfirmationSimpleMessage(userEmail, confirmationToken, serverName));
+        mailSender.send(MailTemplates.getConfirmationSimpleMessage(userEmail, confirmationToken, serverName));
     }
 
     @Override
     public void sendRemindPasswordEmail(String userEmail, String confirmationToken, String serverName) throws EmailException {
-        mailSender.send(templates.getPasswordChangeRequestSimpleMessage(userEmail, confirmationToken, serverName));
+        mailSender.send(MailTemplates.getPasswordChangeRequestSimpleMessage(userEmail, confirmationToken, serverName));
     }
 }

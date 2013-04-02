@@ -58,13 +58,18 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public Boolean confirmation(String token) {
         Confirm confirm = confirmService.findByToken(token);
-        User user = userService.findByEmail(confirm.getEmail());
-        if( null != confirm && null != user && !user.isEnabled()){
-            user.setEnabled(true);
-            userService.update(user);
-            confirmService.delete(confirm);
-            return true;
-        } else {
+        if(null != confirm){
+            User user = userService.findByEmail(confirm.getEmail());
+            if( null != user && !user.isEnabled()){
+                user.setEnabled(true);
+                userService.update(user);
+                confirmService.delete(confirm);
+                return true;
+            } else {
+                return false;
+            }
+        }
+        else {
             return false;
         }
     }

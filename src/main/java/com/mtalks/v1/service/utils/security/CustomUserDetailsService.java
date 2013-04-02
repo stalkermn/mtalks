@@ -23,17 +23,12 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired private PasswordEncoder passwordEncoder;
-
-    private Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
-
     @Override
     public SaltedUser loadUserByUsername(String username)
             throws UsernameNotFoundException {
         User user = getUserDetail(username);
         SaltedUser userDetail = null;
         if(user != null){
-            System.out.println(username);
             userDetail = new SaltedUser(user.getLogin(),user.getPassword(),user.isEnabled(),true,true,true,getAuthorities(user.getRole()), user.getEmail());
         }
         else {
