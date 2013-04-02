@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Date: 3/25/13
@@ -41,7 +42,12 @@ public class LoginRegistrationController {
         }
         //TOD: Add logic for captcha active;
         remoteAdress = request.getRemoteAddr();
-        return "loginfail";
+        return "login";
+    }
+
+    @RequestMapping(value="/login", method = RequestMethod.GET)
+    public String login(ModelMap model, HttpServletRequest request) {
+         return "login";
     }
 
     @RequestMapping(value="/index", method = RequestMethod.GET)
@@ -82,13 +88,23 @@ public class LoginRegistrationController {
         }
     }
 
-    @RequestMapping(value = "/activation", method = RequestMethod.GET)
+    @RequestMapping(value = "/registration/activation", method = RequestMethod.GET)
     public String registerConfirmation(@RequestParam(value = "activationToken", required = true) String token){
         if(registrationService.confirmation(token)){
-            return "redirect:/";
+            return "redirect:/login";
         }
         else{
-            return "loginfail";
+            //TODO add denided activation message
+            return "redirect:/";
         }
+    }
+    /**
+     * json return to view example. Will need for exchange back end with front end
+     * @return
+     */
+    @RequestMapping(value = "/users", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public  List<User> getAllUsers(){
+        return userService.findAll();
     }
 }
