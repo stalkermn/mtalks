@@ -12,9 +12,9 @@
     <mongo:db-factory id="mongo"
                       host="localhost"
                       port="27017"
-                      dbname="mTalks"
+                      dbname="mTalks-test"
                       username="mTalks"
-                      password="TalkUserAdmin"/>
+                      password="mTalks"/>
     <mongo:repositories base-package="com.mtalks.v1.dao" />
     <context:annotation-config />
     <context:component-scan base-package="com.mtalks.v1.service" />

@@ -30,14 +30,13 @@ public class UserRepositoryTest {
 
     static Logger log = Logger.getLogger(UserRepository.class);
 
-    @Autowired
-    MongoTemplate mongoTemplate;
 
     @Autowired
     ContactRepository contactRepository;
 
     @Autowired
     UserRepository userRepository;
+
     User user;
 
     @Before
@@ -67,7 +66,7 @@ public class UserRepositoryTest {
         user.setPassword("test");
         user.setGender("Male");
         user.setBirthday(new Date());
-        mongoTemplate.save(user);
+        userRepository.save(user);
 
         User new_User = userRepository.findByLogin(user.getLogin());
         Assert.assertTrue(new_User != null);
