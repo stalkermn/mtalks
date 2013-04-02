@@ -16,6 +16,7 @@
 
     <!-- Le styles -->
     <link href="resources/css/styles.css" rel="stylesheet">
+    <link href="resources/css/tipTip.css" rel="stylesheet">
     <link href="resources/css/bootstrap.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -111,6 +112,8 @@
 
 
   <script src="resources/js/jquery.js"></script>
+  <script src="resources/js/jquery.tipTip.min.js"></script>
+  <script src="resources/js/valid.js"></script>
   <!--[if IE]>
   <script src="resources/js/forie.js"></script>
   <![endif]-->
