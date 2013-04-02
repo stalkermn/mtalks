@@ -34,7 +34,7 @@
 
   <header>
       <div class="inner">
-          <img src="resources/img/logo.png" alt="mTalks" id="logo">
+          <a href="/"><img src="resources/img/logo.png" alt="mTalks" id="logo"></a>
           <div class="login">
               <div class="inner">
                   <form action="<spring:url value="/j_spring_security_check" />" method="POST">
