@@ -1,4 +1,4 @@
-package com.mtalks.v1.service;
+package com.mtalks.v1.service.registration;
 
 import com.mtalks.v1.dao.ConfirmRepository;
 import com.mtalks.v1.domain.Confirm;

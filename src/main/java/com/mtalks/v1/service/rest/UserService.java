@@ -1,4 +1,4 @@
-package com.mtalks.v1.service;
+package com.mtalks.v1.service.rest;
 
 import com.mtalks.v1.domain.User;
 

@@ -1,13 +1,15 @@
-package com.mtalks.v1.web;
+package com.mtalks.v1.web.rest;
 
 import com.mtalks.v1.domain.User;
-import com.mtalks.v1.service.UserService;
+import com.mtalks.v1.service.rest.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  */
@@ -26,8 +28,8 @@ public class UserController {
         }
     }
 
-//    @RequestMapping(value = "/user", method = RequestMethod.GET, produces = "application/json")
-//    public @ResponseBody User findByName(@RequestParam("email")String email){
-//        return userService.findByEmail(email);
-//    }
+    @RequestMapping(value = "/users/", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody List<User> findAll(){
+        return userService.findAll();
+    }
 }

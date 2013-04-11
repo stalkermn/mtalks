@@ -1,4 +1,4 @@
-package com.mtalks.v1.service;
+package com.mtalks.v1.service.mail;
 
 import com.mtalks.v1.service.utils.mail.MailTemplates;
 import org.apache.commons.mail.EmailException;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * Time: 3:43 PM
  */
 @Service
-public class MailServiceImpl implements MailService {
+public class RegistrationMailServiceImpl implements RegistrationMailService {
 
     @Autowired
     private MailSender mailSender;

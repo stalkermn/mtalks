@@ -1,7 +1,7 @@
 package com.mtalks.v1.service.utils.security;
 
 import com.mtalks.v1.domain.User;
-import com.mtalks.v1.service.UserService;
+import com.mtalks.v1.service.rest.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

@@ -1,4 +1,4 @@
-package com.mtalks.v1.service;
+package com.mtalks.v1.service.registration;
 
 import net.tanesha.recaptcha.ReCaptcha;
 import net.tanesha.recaptcha.ReCaptchaResponse;

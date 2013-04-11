@@ -1,7 +1,9 @@
-package com.mtalks.v1.service;
+package com.mtalks.v1.service.registration;
 
 import com.mtalks.v1.domain.User;
 import com.mtalks.v1.domain.Confirm;
+import com.mtalks.v1.service.mail.RegistrationMailService;
+import com.mtalks.v1.service.rest.UserService;
 import com.mtalks.v1.service.utils.security.UserValidator;
 import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     UserService userService;
     PasswordEncoder passwordEncoder;
-    MailService mailService;
+    RegistrationMailService registrationMailService;
     ConfirmService confirmService;
 
     private static final String HOST_PORT = "%s:%d";
@@ -33,11 +35,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
     public RegistrationServiceImpl(UserService userService,
                                    ConfirmService confirmService,
-                                   MailService mailService,
+                                   RegistrationMailService registrationMailService,
                                    @Qualifier("passwordEncoder") PasswordEncoder passwordEncoder){
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
-        this.mailService = mailService;
+        this.registrationMailService = registrationMailService;
         this.confirmService = confirmService;
     }
 
@@ -47,11 +49,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public Boolean registration(User user, HttpServletRequest request) {
         if(user != null && UserValidator.validate(user)){
-            user.setEnabled(false);
+            user.setEnabled(true);
             user.setRole(2);
             user.setPassword(passwordEncoder.encodePassword(user.getPassword(), user.getEmail()));
             try{
-                mailService.sendConfirmationEmail(userService.save(user).getEmail(), confirmService.save(createConfirm(user)).getToken(), String.format(HOST_PORT, request.getServerName(),request.getServerPort()));
+                registrationMailService.sendConfirmationEmail(userService.save(user).getEmail(), confirmService.save(createConfirm(user)).getToken(), String.format(HOST_PORT, request.getServerName(),request.getServerPort()));
 
             } catch (EmailException ex){
                 System.out.println(ex.getMessage());

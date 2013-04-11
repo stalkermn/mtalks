@@ -1,9 +1,9 @@
 package com.mtalks.v1.web;
 
 import com.mtalks.v1.domain.User;
-import com.mtalks.v1.service.RegistrationService;
-import com.mtalks.v1.service.CaptchaService;
-import com.mtalks.v1.service.UserService;
+import com.mtalks.v1.service.registration.RegistrationService;
+import com.mtalks.v1.service.registration.CaptchaService;
+import com.mtalks.v1.service.rest.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
