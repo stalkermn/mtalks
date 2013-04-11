@@ -18,6 +18,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Date;
 import java.util.UUID;
 
+import static org.junit.Assert.assertEquals;
+
 
 /**
  * User: User
@@ -105,6 +107,13 @@ public class UserRepositoryTest {
         Contact contact1 = contactRepository.findOne(saved_user.getContact().getId());
         System.out.println(contact1);
         System.out.println(saved_user);
+    }
+
+    @Test
+    public void findByLoginAndEmailTest(){
+        User savedUser = userRepository.findByLoginAndEmail(user.getLogin(),user.getEmail());
+
+        assertEquals(user, savedUser);
     }
 
     private Contact createTestContact(){

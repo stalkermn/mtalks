@@ -38,7 +38,7 @@
 
   <header>
       <div class="inner">
-          <img src="resources/img/logo.png" alt="RockSearch" id="logo">
+          <a href="/"><img src="resources/img/logo.png" alt="RockSearch" id="logo"></a>
           <div class="login">
               <div class="inner">
               <c:if test="${empty error}">

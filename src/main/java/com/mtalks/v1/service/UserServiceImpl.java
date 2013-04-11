@@ -72,4 +72,9 @@ public class UserServiceImpl implements UserService {
     public void update(User user) {
         userRepository.save(user);
     }
+
+    @Override
+    public User findByLoginAndEmail(String login, String email) {
+        return userRepository.findByLoginAndEmail(login,email);
+    }
 }

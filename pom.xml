@@ -335,6 +335,38 @@
 					<target>${java-version}</target>
 				</configuration>
 			</plugin>
+
+            <plugin>
+                <groupId>org.zeroturnaround</groupId>
+                <artifactId>jrebel-maven-plugin</artifactId>
+                <configuration>
+                    <classpath>
+                        <resources>
+                            <resource>
+                                <directory>/Users/vvasil/proj/mTalks/target/classes</directory>
+                            </resource>
+                        </resources>
+                    </classpath>
+                    <web>
+                        <resources>
+                            <resource>
+                                <target>skin/</target>
+                                <directory>/Users/vvasil/proj/mTalks/src/main/webapp</directory>
+                            </resource>
+                        </resources>
+                    </web>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>

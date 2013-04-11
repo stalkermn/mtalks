@@ -5,6 +5,7 @@ import com.mtalks.v1.domain.Confirm;
 import com.mtalks.v1.service.utils.security.UserValidator;
 import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,16 +23,25 @@ import java.util.UUID;
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
 
-    @Autowired
     UserService userService;
-    @Autowired
     PasswordEncoder passwordEncoder;
-    @Autowired
     MailService mailService;
-    @Autowired
     ConfirmService confirmService;
 
     private static final String HOST_PORT = "%s:%d";
+
+    @Autowired
+    public RegistrationServiceImpl(UserService userService,
+                                   ConfirmService confirmService,
+                                   MailService mailService,
+                                   @Qualifier("passwordEncoder") PasswordEncoder passwordEncoder){
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+        this.mailService = mailService;
+        this.confirmService = confirmService;
+    }
+
+    public RegistrationServiceImpl(){}
 
     @Transactional
     @Override

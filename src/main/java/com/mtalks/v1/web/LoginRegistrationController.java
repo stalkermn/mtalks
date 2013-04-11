@@ -42,17 +42,17 @@ public class LoginRegistrationController {
         }
         //TOD: Add logic for captcha active;
         remoteAdress = request.getRemoteAddr();
-        return "login";
+        return "registration/login";
     }
 
     @RequestMapping(value="/login", method = RequestMethod.GET)
     public String login(ModelMap model, HttpServletRequest request) {
-         return "login";
+         return "registration/login";
     }
 
     @RequestMapping(value="/index", method = RequestMethod.GET)
     public String logout(ModelMap model) {
-        return "index";
+        return "registration/index";
     }
 
     @RequestMapping(value="/", method = RequestMethod.GET)
@@ -64,7 +64,7 @@ public class LoginRegistrationController {
         else {
             model.put("regerror", null);
         }
-        return "index";
+        return "registration/index";
     }
 
     @RequestMapping(value="/search", method = RequestMethod.GET)
@@ -82,7 +82,7 @@ public class LoginRegistrationController {
     public String registration(@ModelAttribute("user") User user,
                              BindingResult result, HttpServletRequest request, ModelMap modelMap) {
         if(registrationService.registration(user, request)){
-            return "registrationSuccess";
+            return "registration/registrationSuccess";
         } else {
             return "redirect:/regerror?=true";
         }
@@ -94,7 +94,7 @@ public class LoginRegistrationController {
             return "redirect:/login";
         }
         else{
-            //TODO add denided activation message
+            //TODO add unsuccess activation message
             return "redirect:/";
         }
     }

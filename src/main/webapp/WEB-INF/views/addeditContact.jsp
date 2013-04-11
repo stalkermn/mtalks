@@ -19,7 +19,7 @@
 
 <h2><spring:message code="label.title" /></h2>
 <c:if test="${empty contact.id}">
-<form:form method="post" commandName="basicUser" action="add" >
+<form:form method="post" commandName="user" action="add" >
     <form:hidden path="id"/>
 
     <table>
@@ -90,7 +90,7 @@
 </form:form>
 </c:if>
 <c:if test="${not empty contact.id}">
-    <form:form method="post" commandName="basicUser" action="edit" >
+    <form:form method="post" commandName="user" action="edit" >
         <form:hidden path="id"/>
 
         <table>
