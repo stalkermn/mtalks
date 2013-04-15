@@ -1,5 +1,6 @@
 package com.mtalks.v1.service.utils.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.SavedRequest;
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
     public static final String SAVED_REQUEST = "SPRING_SECURITY_SAVED_REQUEST";
+    private static final String REDIRECT_URL = "/id%s";
 
     /**
      * @param request
@@ -20,15 +22,17 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
      * @throws ServletException
      * @throws IOException
      */
+
+    @Autowired
+    CurrentUser currentUser;
+
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
                                         HttpServletResponse response, Authentication authentication)
             throws ServletException, IOException {
+        setDefaultTargetUrl(String.format(REDIRECT_URL, currentUser.getId()));
         setAlwaysUseDefaultTargetUrl(true);
-        SavedRequest savedRequest = (SavedRequest) request.getSession().getAttribute(SAVED_REQUEST);
-        if (savedRequest != null) {
-            request.getSession().setAttribute("instance", savedRequest.getRedirectUrl());
-        }
         super.onAuthenticationSuccess(request, response, authentication);
     }
 }

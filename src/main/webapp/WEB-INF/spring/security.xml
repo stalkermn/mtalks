@@ -17,7 +17,7 @@
 
         <form-login login-page="/"
                     authentication-failure-url="/loginfailed"
-                    default-target-url="/search"/>
+                    authentication-success-handler-ref="successAuthHandler"/>
         <http-basic/>
         <logout logout-url="/logout"
                 invalidate-session="true"
@@ -38,6 +38,8 @@
             </password-encoder>
         </authentication-provider>
     </authentication-manager>
+
+    <beans:bean class="com.mtalks.v1.service.utils.security.CurrentUser"/>
     
     <beans:bean id="saltSource" class="com.mtalks.v1.service.utils.security.CustomSaltSourceImpl"/>
     <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />

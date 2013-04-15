@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=utf8" pageEncoding="utf8" isELIgnored="false" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,14 +57,14 @@
           <a href="#"><li>Музыка</li></a>
           <a href="#"><li>Фотографии</li></a>
           <a href="#"><li>Настройки</li></a>
-          <a href="#"><li id="lastchild">Выход</li></a>
+          <a href="/logout"><li id="lastchild">Выход</li></a>
         </ul>
       </div>
 
       <div class="data">
 
         <div class="status_bar">
-            <span class="name">Артур Кушка</span>
+            <span class="name">${user.firstname}  ${user.lastname}</span>
             <span class="status">Online</span>
         </div>
 
@@ -77,17 +81,17 @@
           <div class="desc">
 
             <div class="social_inf">
-              <span class="name">Артур Кушка</span>
+              <span class="name">${user.firstname}  ${user.lastname}</span>
               <span class="status">Логотип вижуалстудии отображает актуальное время компиляции больших проектов</span>
             </div>
 
             <div class="social_data">
               <div class="list">
                 <div class="soc_list">
-                  <div class="soc_label">День рождения:</div><div class="soc_data">27 апреля 1995 г.</div>
+                  <div class="soc_label">День рождения:</div><div class="soc_data">${user.birthday}</div>
                 </div>
                 <div class="soc_list">
-                  <div class="soc_label">Родной город:</div><div class="soc_data">Днепропетровск</div>
+                  <div class="soc_label">Родной город:</div><div class="soc_data">${user.contact.adress}</div>
                 </div>
                 <div class="soc_list">
                   <div class="soc_label">Группа:</div><div class="soc_data">В активном поиске</div>
@@ -96,7 +100,7 @@
                   <div class="soc_label">Инструмент:</div><div class="soc_data">Cort CR210</div>
                 </div>
                 <div class="soc_list">
-                  <div class="soc_label">Возраст:</div><div class="soc_data">17 лет</div>
+                  <div class="soc_label">Возраст:</div><div class="soc_data">лет</div>
                 </div>
               </div>
             </div>

@@ -4,7 +4,9 @@ import com.mtalks.v1.domain.User;
 import com.mtalks.v1.service.registration.RegistrationService;
 import com.mtalks.v1.service.registration.CaptchaService;
 import com.mtalks.v1.service.rest.UserService;
+import com.mtalks.v1.service.utils.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -26,6 +28,10 @@ public class LoginRegistrationController {
 
     @Autowired
     private CaptchaService captchaService;
+
+    @Qualifier("com.mtalks.v1.service.utils.security.CurrentUser")
+    @Autowired
+    private CurrentUser currentUser;
 
     @Autowired
     private RegistrationService registrationService;
@@ -57,14 +63,26 @@ public class LoginRegistrationController {
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String login(ModelMap model, @RequestParam(value = "regerror", required = false) Boolean regError) {
-        model.addAttribute("user", new User());
-        if(regError!= null && regError){
-            model.put("regerror", regError);
+        try{
+            return "redirect:/id".concat(currentUser.getId());
         }
-        else {
-            model.put("regerror", null);
+        catch (NullPointerException e){
+            System.out.println("User have no auth");
         }
-        return "registration/index";
+        finally {
+            model.addAttribute("user", new User());
+            if(regError!= null && regError){
+                model.put("regerror", regError);
+            }
+            else {
+                model.put("regerror", null);
+            }
+            return "registration/index";
+        }
+
+
+
+
     }
 
     @RequestMapping(value="/search", method = RequestMethod.GET)

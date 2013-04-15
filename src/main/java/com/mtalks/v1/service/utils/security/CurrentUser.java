@@ -14,7 +14,6 @@ import java.io.Serializable;
  * Date: 3/26/13
  * Time: 8:10 PM
  */
-@Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CurrentUser implements Serializable {
 
@@ -22,6 +21,7 @@ public class CurrentUser implements Serializable {
     private String id;
     private String login;
     private User user;
+
     @Autowired
     private UserService userService;
 
