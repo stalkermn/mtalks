@@ -1,4 +1,4 @@
 mtalks
 ======
 
-musicians social network
+sandbox to play with java
